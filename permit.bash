@@ -23,7 +23,7 @@ sec_per()
 	elif [[ $3 -eq 10 ]]; then
         	sudo setfacl -m u:"$1"_0"$3":rw /home/"$1"_"$2"
     	else 
-		sudo setfacl -m u:"$1"_"$3":r /home/"$1"_0"$2"
+		sudo setfacl -m u:"$1"_"$3":r /home/"$1"_"$2"
 	fi		
 }
 
