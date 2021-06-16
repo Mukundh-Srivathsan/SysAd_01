@@ -29,7 +29,7 @@ abs_bound() {
     do
         for j in {0..89}
         do
-            if [[ ${abs[i]} == ${check[$j]} ]]
+            if [[ ${abs[i]} == "${check[$j]}" ]]
             then
                 check[$j]=""
             fi
@@ -38,7 +38,7 @@ abs_bound() {
     
     for i in "${check[@]}"
     do
-        if [[ $i != "" ]] && [[ "$(grep $i temp.txt)" == "" ]]
+        if [[ $i != "" ]] && [[ "$(grep "$i" temp.txt)" == "" ]]
         then
             echo "$i" >> temp.txt
         fi  
@@ -75,7 +75,7 @@ abs_today() {
     do
         for j in {0..89}
         do
-            if [[ ${abs[i]} == ${check[$j]} ]]
+            if [[ ${abs[i]} == "${check[$j]}" ]]
             then
                 check[$j]=""
             fi
@@ -86,28 +86,28 @@ abs_today() {
     do
         if [[ $i != "" ]] 
         then
-            echo -e "$i\t$START"
+            echo -e "$i\t$date"
         fi  
     done
 } 
 
 
-read START
-read END
->temp.txt
+read -r START
+read -r END
+touch temp.txt
 
 if [[ $START != "" ]] && [[ $END != "" ]]
 then
     while [ "$START" != "$(date -d "$END +1 day" "+%Y-%m-%d")" ]
     do
-        line=$(grep $START attendance.log | awk '{print $1}')
+        line=$(grep "$START" attendance.log | awk '{print $1}')
         if [[ $line != "" ]]
         then
-            today=($line)
-            abs_bound ${today[@]}
+            today=("$line")
+            abs_bound "${today[@]}"
         fi
         
-        START=`date -d "$START +1 day" "+%Y-%m-%d" `
+        START=$(date -d "$START +1 day" "+%Y-%m-%d")
     done
 else
     START=$(awk 'NR == 1 {print $3}' attendance.log | cut -c 1-10)
@@ -116,14 +116,14 @@ else
     
     while [ "$START" != "$(date -d "$END +1 day" "+%Y-%m-%d")" ]
     do
-        line=$(grep $START attendance.log | awk '{print $1}')
+        line=$(grep "$START" attendance.log | awk '{print $1}')
         if [[ $line != "" ]]
         then
-            today=($line)
-            abs_today ${today[@]} $START
+            today=("$line")
+            abs_today "${today[@]}" "$START"
         fi
         
-        START=`date -d "$START +1 day" "+%Y-%m-%d" `
+        START=$(date -d "$START +1 day" "+%Y-%m-%d")
     done
 
 fi
