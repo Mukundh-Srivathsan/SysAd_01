@@ -2,26 +2,18 @@
 
 setfacl -m g:AlphaQ:--- /home
 
-for i in {1..30}
+for i in {01..30}
 do
-	if [[ $i -lt 10 ]]; then
-		sudo setfacl -m u:Jay_Jay:w /home/sysAd_0"$i"
-		sudo setfacl -m u:Jay_Jay:w /home/appDev_0"$i"
-		sudo setfacl -m u:Jay_Jay:w /home/webDev_0"$i"
-        else
-            	sudo setfacl -m u:Jay_Jay:w /home/sysAd_"$i"
-            	sudo setfacl -m u:Jay_Jay:w /home/appDev_"$i"
-	    	sudo setfacl -m u:Jay_Jay:w /home/webDev_"$i"
-	fi
+	sudo setfacl -m u:Jay_Jay:w /home/sysAd_"$i"
+	sudo setfacl -m u:Jay_Jay:w /home/appDev_"$i"
+	sudo setfacl -m u:Jay_Jay:w /home/webDev_"$i"
 done
 
 sec_per()
 {
 
-	if [[ $3 -lt 10 ]]; then
-		sudo setfacl -m u:"$1"_0"$3":rw /home/"$1"_0"$2"
-	elif [[ $3 -eq 10 ]]; then
-        	sudo setfacl -m u:"$1"_0"$3":rw /home/"$1"_"$2"
+	if [[ $3 -le 10 ]]; then
+		sudo setfacl -m u:"$1"_0"$3":rw /home/"$1"_"$2"
     	else 
 		sudo setfacl -m u:"$1"_"$3":r /home/"$1"_"$2"
 	fi		
@@ -29,7 +21,7 @@ sec_per()
 
 th_fr_per()
 {
-    if [[ $3 -lt 20 ]]; then
+    if [[ $3 -le 20 ]]; then
     	sudo setfacl -m u:"$1"_"$3":rw /home/"$1"_"$2"
     else
     	sudo setfacl -m u:"$1"_"$3":r /home/"$1"_"$2"
@@ -60,7 +52,7 @@ usr_per()
 	fi
 }
 
-for i in {1..30}
+for i in {01..30}
 	do
 		usr_per sysAd "$i"
 		usr_per appDev "$i"
