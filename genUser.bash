@@ -2,7 +2,7 @@
 
 sudo groupadd AlphaQ
  
-sudo useradd -force-badname Jay_Jay
+sudo adduser -force-badname Jay_Jay
 sudo usermod -G AlphaQ Jay_Jay
 sudp usermod -aG sudo Jay_Jay
 
