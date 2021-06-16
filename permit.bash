@@ -54,7 +54,7 @@ usr_per()
 
 for i in {01..30}
 	do
-		usr_per sysAd "$i"
-		usr_per appDev "$i"
-		usr_per webDev "$i"
+		usr_per sysAd $i
+		usr_per appDev $i
+		usr_per webDev $i
 done
