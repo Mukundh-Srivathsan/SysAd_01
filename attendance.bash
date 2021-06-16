@@ -6,22 +6,14 @@ abs_bound() {
    check=()
    
    j=0
-   for i in {1..30}
+   for i in {01..30}
    do
-        if [[ i -lt 10 ]];then 
-            check[j]="sysAd_0$i"
-            j=$j+1
-            check[j]="appDev_0$i"
-            j=$j+1
-            check[j]="webDev_0$i"
-        else
-            check[j]="sysAd_$i"
-            j=$j+1
-            check[j]="appDev_$i"
-            j=$j+1
-            check[j]="webDev_$i"
-        fi
-        j=$j+1
+      check[j]="sysAd_$i"
+      j=$j+1
+      check[j]="appDev_$i"
+      j=$j+1
+      check[j]="webDev_$i"
+      j=$j+1
    done
     
         
@@ -52,22 +44,14 @@ abs_today() {
    check=()
    
    j=0
-   for i in {1..30}
+   for i in {01..30}
    do
-        if [[ i -lt 10 ]];then 
-            check[j]="sysAd_0$i"
-            j=$j+1
-            check[j]="appDev_0$i"
-            j=$j+1
-            check[j]="webDev_0$i"
-        else
-            check[j]="sysAd_$i"
-            j=$j+1
-            check[j]="appDev_$i"
-            j=$j+1
-            check[j]="webDev_$i"
-        fi
-        j=$j+1
+      check[j]="sysAd_$i"
+      j=$j+1
+      check[j]="appDev_$i"
+      j=$j+1
+      check[j]="webDev_$i"
+      j=$j+1
    done
     
         
