@@ -30,9 +30,9 @@ sec_per()
 th_fr_per()
 {
     if [[ $3 -lt 20 ]]; then
-	   sudo setfacl -m u:"$1"_"$3":rw /home/"$1"_"$2"
+    	sudo setfacl -m u:"$1"_"$3":rw /home/"$1"_"$2"
     else
-        sudo setfacl -m u:"$1"_"$3":r /home/"$1"_"$2"
+    	sudo setfacl -m u:"$1"_"$3":r /home/"$1"_"$2"
     fi
 }
 
