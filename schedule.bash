@@ -14,7 +14,7 @@ fd=`date +%Y-%m-%d`
 
 sudo echo -e "Date\t\tTime" > "schedule.txt" 
 
-date=`grep fd File` 
+date=`grep fd $File` 
 
 if [[ "$date" != "" ]]; then
     for i in {01..30}
