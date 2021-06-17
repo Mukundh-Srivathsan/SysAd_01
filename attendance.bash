@@ -1,42 +1,5 @@
 #!/bin/bash
-
-abs_bound() {
-
-   abs=("$@")
-   check=()
-   
-   j=0
-   for i in {01..30}
-   do
-      check[j]="sysAd_$i"
-      j=$j+1
-      check[j]="appDev_$i"
-      j=$j+1
-      check[j]="webDev_$i"
-      j=$j+1
-   done
-    
-        
-    for i in ${abs[@]}
-    do
-        for j in {0..89}
-        do
-            if [[ "$i" == "${check[$j]}" ]]
-            then
-                check[$j]=""
-            fi
-        done
-    done
-    
-    for i in ${check[@]}
-    do
-        if [[ $i != "" ]] && [[ "$(grep "$i" temp.txt)" == "" ]]
-        then
-            echo "$i" >> temp.txt
-        fi  
-    done
-}                       
-
+                      
 abs_today() {
 
    date=$2
@@ -89,18 +52,18 @@ then
         if [[ $line != "" ]]
         then
             prs=("$line")
-            abs_bound "${prs[@]}"
+            abs_today "${prs[@]}" "$START"
         fi
         START=$(date -d "$START +1 day" "+%Y-%m-%d")
     done
 else
-    START=$(awk 'NR == 1 {print $3}' attendance.log | cut -c 1-10)
+    START=$(awk 'NR == 1 {print $3}' /attendance.log | cut -c 1-10)
     
     END=$(date +%Y-%m-%d)
     
     while [ "$START" != "$(date -d "$END +1 day" "+%Y-%m-%d")" ]
     do
-        line=$(grep "$START" attendance.log | awk '{print $1}')
+        line=$(grep "$START" /attendance.log | awk '{print $1}')
         if [[ $line != "" ]]
         then
             prs=("$line")
