@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo setfacl -m u:Jay_Jay:r /home/Jay_Jay
+sudo setfacl -m other::--- /home/Jay_Jay
 
 for i in {01..30}
 do
