@@ -63,10 +63,3 @@ for i in {1..30}
 		usr_per "appDev" $j
 		usr_per "webDev" $j
 done
-
-for i in {01..30}
-	do
-		getfacl /home/sysAd_$i
-		getfacl /home/appDev_$i
-		getfacl /home/webDev_$i
-done
