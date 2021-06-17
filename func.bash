@@ -12,7 +12,7 @@ then
 	
 	touch /home/$usr/$START_mom.txt
 	echo "This meeting we discussed about blah blah" >> /home/$usr/$START_mom.txt
-	echo "." >> cd /home/$usr/$START_mom.txt
+	echo "." >> /home/$usr/$START_mom.txt
 	echo "End of meet" >> /home/$usr/$START_mom.txt
 	
 	rm tmp.txt	
