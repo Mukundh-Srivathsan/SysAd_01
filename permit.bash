@@ -1,14 +1,16 @@
 #!/bin/bash
 
+sudo setfacl -m u:Jay_Jay:r /home/Jay_Jay
+
 for i in {01..30}
 do
 	sudo setfacl -m u:Jay_Jay:r /home/sysAd_"$i"
 	sudo setfacl -m u:Jay_Jay:r /home/appDev_"$i"
 	sudo setfacl -m u:Jay_Jay:r /home/webDev_"$i"
 	
-	sudo setfacl -m others:--- /home/sysAd_"$i"
-	sudo setfacl -m others:--- /home/appDev_"$i"
-	sudo setfacl -m others:--- /home/webDev_"$i"
+	sudo setfacl -m o::--- /home/sysAd_"$i"
+	sudo setfacl -m o::--- /home/appDev_"$i"
+	sudo setfacl -m o::--- /home/webDev_"$i"
 done
 
 sec_per()
