@@ -28,7 +28,7 @@ abs_bound() {
         done
     done
     
-    for i in "${check[@]}"
+    for i in ${check[@]}
     do
         if [[ $i != "" ]] && [[ "$(grep "$i" temp.txt)" == "" ]]
         then
@@ -66,7 +66,7 @@ abs_today() {
         done
     done
     
-    for i in "${check[@]}"
+    for i in ${check[@]}
     do
         if [[ $i != "" ]] 
         then
