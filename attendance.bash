@@ -42,8 +42,6 @@ abs_today() {
 read -r START
 read -r END
 
-touch temp.txt
-
 if [[ $START != "" ]] && [[ $END != "" ]]
 then
     while [ "$START" != "$(date -d "$END +1 day" "+%Y-%m-%d")" ]
@@ -73,6 +71,3 @@ else
     done
 
 fi
-
-cat temp.txt
-rm temp.txt
