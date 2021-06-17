@@ -94,13 +94,13 @@ then
         START=$(date -d "$START +1 day" "+%Y-%m-%d")
     done
 else
-    START=$(awk 'NR == 1 {print $3}' /home/Jay_Jay/attendance.log | cut -c 1-10)
+    START=$(awk 'NR == 1 {print $3}' attendance.log | cut -c 1-10)
     
     END=$(date +%Y-%m-%d)
     
     while [ "$START" != "$(date -d "$END +1 day" "+%Y-%m-%d")" ]
     do
-        line=$(grep "$START" /home/Jay_Jay/attendance.log | awk '{print $1}')
+        line=$(grep "$START" attendance.log | awk '{print $1}')
         if [[ $line != "" ]]
         then
             prs=("$line")
