@@ -15,7 +15,7 @@ do
     	sudo echo -e "Date\t\tTime" > "/home/webDev_$i/schedule.txt"
 	fi
 done
-
+https://github.com/Mukundh-Srivathsan/SysAd_01/blob/main/schedule.bash
 File="future.txt"
 
 fd=`date +%Y-%m-%d`
@@ -25,7 +25,7 @@ date=`grep fd $File`
 if [[ "$date" != "" ]]; then
     for i in {01..30}
     do
-    	t=$(grep fd $File | awk '{print $2}')
+    	t=$(grep $fd $File | awk '{print $2}')
         sudo echo -e "$fd\t$t" >> "/home/sysAd_$i/schedule.txt"
         sudo echo -e "$fd\t$t" >> "/home/appDev_$i/schedule.txt"
         sudo echo -e "$fd\t$t" >> "/home/webDev_$i/schedule.txt"
