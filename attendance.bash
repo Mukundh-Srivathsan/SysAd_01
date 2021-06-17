@@ -17,11 +17,11 @@ abs_bound() {
    done
     
         
-    for i in "${!abs[@]}"
+    for i in ${abs[@]}
     do
         for j in {0..89}
         do
-            if [[ ${abs[i]} == "${check[$j]}" ]]
+            if [[ "$i" == "${check[$j]}" ]]
             then
                 check[$j]=""
             fi
@@ -40,7 +40,7 @@ abs_bound() {
 abs_today() {
 
    date=$2
-   abs=("$@")
+   abs=("$1")
    check=()
    
    j=0
@@ -55,11 +55,11 @@ abs_today() {
    done
     
         
-    for i in "${!abs[@]}"
+    for i in ${abs[@]}
     do
         for j in {0..89}
         do
-            if [[ ${abs[i]} == "${check[$j]}" ]]
+            if [[ "$i" == "${check[$j]}" ]]
             then
                 check[$j]=""
             fi
@@ -78,6 +78,7 @@ abs_today() {
 
 read -r START
 read -r END
+
 touch temp.txt
 
 if [[ $START != "" ]] && [[ $END != "" ]]
@@ -87,10 +88,9 @@ then
         line=$(grep "$START" attendance.log | awk '{print $1}')
         if [[ $line != "" ]]
         then
-            today=("$line")
-            abs_bound "${today[@]}"
+            prs=("$line")
+            abs_bound "${prs[@]}"
         fi
-        
         START=$(date -d "$START +1 day" "+%Y-%m-%d")
     done
 else
@@ -103,10 +103,9 @@ else
         line=$(grep "$START" /home/Jay_Jay/attendance.log | awk '{print $1}')
         if [[ $line != "" ]]
         then
-            today=("$line")
-            abs_today "${today[@]}" "$START"
+            prs=("$line")
+            abs_today "${prs[@]}" "$START"
         fi
-        
         START=$(date -d "$START +1 day" "+%Y-%m-%d")
     done
 
